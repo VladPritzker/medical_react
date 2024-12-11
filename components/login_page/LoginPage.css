@@ -1,0 +1,220 @@
+/* General body styling for better UI alignment */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #0056b3, #00d4ff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .login-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    max-width: 400px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+
+
+  /* corusel */
+  .slider-container {
+  position: relative;
+  width: 100%;
+  perspective: 1000px;
+}
+
+.slick-slider {
+  overflow: visible;
+}
+
+.slick-slide {
+  transform: scale(0.8);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  opacity: 0.7;
+}
+
+.slick-center {
+  transform: scale(1);
+  opacity: 1;
+  z-index: 1;
+}
+
+.slick-prev,
+.slick-next {
+  font-size: 24px;
+  color: #0056b3;
+  z-index: 2;
+}
+
+.slick-prev:hover,
+.slick-next:hover {
+  color: #00d4ff;
+}
+
+.slick-slide img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transform-origin: center center;
+}
+
+/* corusel */
+  
+  /* Floating effect animation */
+  @keyframes float {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  /* Form styling */
+  .login-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .login-form h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-align: center;
+    color: #0056b3;
+  }
+  
+  /* Input fields */
+  .login-form input {
+    margin-bottom: 15px;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .login-form input:focus {
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.8);
+  }
+  
+  /* Buttons */
+  .login-form button {
+    margin-top: 10px;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    color: #ffffff;
+    background: linear-gradient(135deg, #0056b3, #00d4ff);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 10px;
+  }
+  
+  .login-form button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+  }
+  
+  /* Toggle and reset buttons */
+  .login-form .toggle,
+  .login-form .forgot-password {
+    background: transparent;
+    color: #0056b3;
+    font-size: 14px;
+    margin-top: 10px;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  
+  .login-form .toggle:hover,
+  .login-form .forgot-password:hover {
+    text-decoration: none;
+  }
+  
+  /* Slider */
+  .slider {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .slider img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+  }
+  
+  .slider img:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .login-page {
+      width: 90%;
+      padding: 15px;
+    }
+  
+    .login-form h2 {
+      font-size: 20px;
+    }
+  
+    .login-form input {
+      font-size: 14px;
+      padding: 10px;
+    }
+  
+    .login-form button {
+      font-size: 14px;
+      padding: 10px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .login-page {
+      padding: 10px;
+    }
+  
+    .login-form h2 {
+      font-size: 18px;
+    }
+  
+    .login-form input {
+      font-size: 12px;
+      padding: 8px;
+    }
+  
+    .login-form button {
+      font-size: 12px;
+      padding: 8px;
+    }
+  }
+  
+.slick-prev:before{
+margin-left: -5px;
+  }
+.slick-next:before{
+margin-right: -5px;
+  }
