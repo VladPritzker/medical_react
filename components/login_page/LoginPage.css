@@ -1,36 +1,37 @@
 /* General body styling for better UI alignment */
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #0056b3, #00d4ff);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
-  }
-  
-  .login-page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 90%;
-    max-width: 400px;
-    padding: 20px;
-    background: #ffffff;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #0056b3, #00d4ff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
 
+.login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 400px; /* Set max width for smaller devices */
+  height: auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 10px; /* Add some margin for smaller devices */
+}
 
-
-  /* corusel */
-  .slider-container {
+/* Carousel container */
+.slider-container {
   position: relative;
   width: 100%;
   perspective: 1000px;
+  margin-top: 15px;
 }
 
 .slick-slider {
@@ -51,7 +52,7 @@ body {
 
 .slick-prev,
 .slick-next {
-  font-size: 24px;
+  font-size: 20px;
   color: #0056b3;
   z-index: 2;
 }
@@ -69,152 +70,139 @@ body {
   transform-origin: center center;
 }
 
-/* corusel */
-  
-  /* Floating effect animation */
-  @keyframes float {
-    0% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-    100% {
-      transform: translateY(0);
-    }
+/* Form styling */
+.login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form h2 {
+  margin-bottom: 20px;
+  font-size: 22px;
+  text-align: center;
+  color: #0056b3;
+}
+
+/* Input fields */
+.login-form input {
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.login-form input:focus {
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.8);
+}
+
+/* Buttons */
+.login-form button {
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 8px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #0056b3, #00d4ff);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 10px;
+}
+
+.login-form button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+}
+
+/* Responsive Design for Mobile Devices */
+@media (max-width: 768px) {
+  .login-page {
+    width: 95%;
+    padding: 15px;
+    margin-left: 15%
   }
-  
-  /* Form styling */
-  .login-form {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-  
+
   .login-form h2 {
-    margin-bottom: 20px;
-    font-size: 24px;
-    text-align: center;
-    color: #0056b3;
+    font-size: 20px;
   }
-  
-  /* Input fields */
+
   .login-form input {
-    margin-bottom: 15px;
-    padding: 12px;
-    border-radius: 8px;
-    border: none;
-    outline: none;
-    font-size: 16px;
-    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
-  }
-  
-  .login-form input:focus {
-    box-shadow: 0 0 8px rgba(0, 123, 255, 0.8);
-  }
-  
-  /* Buttons */
-  .login-form button {
-    margin-top: 10px;
-    padding: 12px;
-    font-size: 16px;
-    border: none;
-    border-radius: 8px;
-    color: #ffffff;
-    background: linear-gradient(135deg, #0056b3, #00d4ff);
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin-bottom: 10px;
-  }
-  
-  .login-form button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
-  }
-  
-  /* Toggle and reset buttons */
-  .login-form .toggle,
-  .login-form .forgot-password {
-    background: transparent;
-    color: #0056b3;
     font-size: 14px;
+    padding: 10px;
+  }
+
+  .login-form button {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .slider-container {
     margin-top: 10px;
-    text-decoration: underline;
-    cursor: pointer;
   }
-  
-  .login-form .toggle:hover,
-  .login-form .forgot-password:hover {
-    text-decoration: none;
+}
+
+
+.error-message {
+  color: #d32f2f;
+  background-color: #ffebee;
+  padding: 10px;
+  border: 1px solid #f44336;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  text-align: center;
+}
+
+
+.success-message {
+  color: #2e7d32;
+  background-color: #e8f5e9;
+  padding: 10px;
+  border: 1px solid #4caf50;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  text-align: center;
+}
+
+
+@media (max-width: 480px) {
+  .login-page {
+    width: 60%;
+    padding: 10px;
+    border-radius: 10px;
+    margin-left: 18%
   }
-  
-  /* Slider */
-  .slider {
-    margin-top: 20px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    overflow: hidden;
+
+  .login-form h2 {
+    font-size: 18px;
   }
-  
-  .slider img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
+
+  .login-form input {
+    font-size: 12px;
+    padding: 8px;
   }
-  
-  .slider img:hover {
-    transform: scale(1.05);
+
+  .login-form button {
+    font-size: 12px;
+    padding: 8px;
   }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .login-page {
-      width: 90%;
-      padding: 15px;
-    }
-  
-    .login-form h2 {
-      font-size: 20px;
-    }
-  
-    .login-form input {
-      font-size: 14px;
-      padding: 10px;
-    }
-  
-    .login-form button {
-      font-size: 14px;
-      padding: 10px;
-    }
+
+  .slider-container {
+    margin-top: 5px;
   }
-  
-  @media (max-width: 480px) {
-    .login-page {
-      padding: 10px;
-    }
-  
-    .login-form h2 {
-      font-size: 18px;
-    }
-  
-    .login-form input {
-      font-size: 12px;
-      padding: 8px;
-    }
-  
-    .login-form button {
-      font-size: 12px;
-      padding: 8px;
-    }
-  }
-  
-.slick-prev:before{
-margin-left: -5px;
-  }
-.slick-next:before{
-margin-right: -5px;
-  }
+}
+
+/* Adjust slider navigation buttons for smaller screens */
+.slick-prev:before {
+  margin-left: -5px;
+}
+
+.slick-next:before {
+  margin-right: -5px;
+}
