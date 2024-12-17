@@ -10,7 +10,8 @@ import img2 from "./images/premium_photo-1719617672948-862f2f06e2a1.avif";
 import img3 from "./images/premium_photo-1719617673012-4b121052cc8f.avif";
 import img4 from "./images/premium_photo-1719617673192-61b02470619d.avif";
 
-const apiUrl = "http://127.0.0.1:8001";
+// Fetch the API URL from the environment
+const apiUrl = process.env.REACT_APP_API_URL;
 
 function LoginPage() {
   const [isLogin, setIsLogin] = useState(true);
@@ -18,25 +19,15 @@ function LoginPage() {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [isSpecialist, setIsSpecialist] = useState(false); // New checkbox state
   const [errorMessage, setErrorMessage] = useState("");
-  const [successMessage, setSuccessMessage] = useState(""); // New success message state
+  const [successMessage, setSuccessMessage] = useState("");
   const navigate = useNavigate();
-
-  const carouselSettings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    centerMode: true,
-    centerPadding: "0px",
-    autoplay: true,
-    autoplaySpeed: 2000,
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrorMessage(""); // Reset errors
-    setSuccessMessage(""); // Reset success message
+    setErrorMessage("");
+    setSuccessMessage("");
 
     const usernameRegex = /^[a-zA-Z0-9_]+$/;
     if (!isLogin && !usernameRegex.test(username)) {
@@ -55,7 +46,11 @@ function LoginPage() {
     }
 
     try {
-      const endpoint = isLogin ? `${apiUrl}/api/login/` : `${apiUrl}/api/register/`;
+      const role = isSpecialist ? "users" : "client"; // Determine the role
+      const endpoint = isLogin
+        ? `${apiUrl}/${role}/login/`
+        : `${apiUrl}/${role}/register/`;
+
       const requestBody = isLogin
         ? { email, password }
         : { email, password, username };
@@ -72,10 +67,13 @@ function LoginPage() {
         if (isLogin) {
           localStorage.setItem("accessToken", data.access);
           localStorage.setItem("refreshToken", data.refresh);
-          navigate("/dashboard");
+          const dashboardPath = isSpecialist
+            ? "/specialist-dashboard"
+            : "/client-dashboard";
+          navigate(dashboardPath);
         } else {
-          setIsLogin(true); // Switch to login mode
-          setSuccessMessage("Registration successful! You can now log in."); // Show success
+          setIsLogin(true);
+          setSuccessMessage("Registration successful! You can now log in.");
         }
         setErrorMessage("");
       } else {
@@ -108,7 +106,7 @@ function LoginPage() {
       <form className="login-form" onSubmit={handleSubmit}>
         <h2>{isLogin ? "Login" : "Register"}</h2>
         {errorMessage && <p className="error-message">{errorMessage}</p>}
-        {successMessage && <p className="success-message">{successMessage}</p>} {/* Success message */}
+        {successMessage && <p className="success-message">{successMessage}</p>}
         <input
           type="email"
           placeholder="Email"
@@ -141,6 +139,17 @@ function LoginPage() {
             />
           </>
         )}
+
+        {/* Checkbox for Specialists */}
+        <label className="checkbox-container">
+          I am a specialist
+          <input
+            type="checkbox"
+            checked={isSpecialist}
+            onChange={(e) => setIsSpecialist(e.target.checked)}
+          />
+          <span className="custom-checkbox"></span>
+        </label>
         <button type="submit">{isLogin ? "Login" : "Register"}</button>
         <button
           type="button"
@@ -152,7 +161,7 @@ function LoginPage() {
       </form>
 
       <div className="slider-container">
-        <Slider {...carouselSettings}>
+        <Slider dots infinite autoplay autoplaySpeed={2000}>
           {[img1, img2, img3, img4].map((src, index) => (
             <div key={index}>
               <img src={src} alt={`slider-img-${index}`} />

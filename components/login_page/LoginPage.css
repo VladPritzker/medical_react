@@ -17,7 +17,7 @@ body {
   align-items: center;
   justify-content: center;
   width: 100%;
-  max-width: 400px; /* Set max width for smaller devices */
+  max-width: 700px; /* Set max width for smaller devices */
   height: auto;
   padding: 20px;
   background: #ffffff;
@@ -173,10 +173,11 @@ body {
 
 @media (max-width: 480px) {
   .login-page {
-    width: 60%;
+    width: 45%;
     padding: 10px;
     border-radius: 10px;
-    margin-left: 18%
+    margin-left: 26%;
+
   }
 
   .login-form h2 {
@@ -186,6 +187,7 @@ body {
   .login-form input {
     font-size: 12px;
     padding: 8px;
+    width: 90%;
   }
 
   .login-form button {
@@ -205,4 +207,56 @@ body {
 
 .slick-next:before {
   margin-right: -5px;
+}
+/* Check-box  */
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; Text and checkbox alignment */
+  font-size: 14px;
+  color: #0056b3;
+  cursor: pointer;
+  margin-bottom: 15px;
+  position: relative;
+  user-select: none;
+}
+
+.checkbox-container input[type="checkbox"] {
+  display: none;
+}
+
+.custom-checkbox {
+  height: 20px;
+  width: 20px;
+  background-color: #fff;
+  border: 2px solid #0056b3;
+  border-radius: 4px;
+  position: relative;
+  margin-left: 10px; /* Space between text and checkbox */
+  transition: all 0.3s ease;
+}
+
+/* Checkmark Effect */
+.custom-checkbox::after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 6px;
+  top: 2px;
+  width: 4px;
+  height: 8px;
+  border: solid #0056b3;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* Checked State */
+.checkbox-container input[type="checkbox"]:checked + .custom-checkbox {
+  background-color: #00d4ff;
+  border-color: #00d4ff;
+}
+
+.checkbox-container input[type="checkbox"]:checked + .custom-checkbox::after {
+  display: block;
 }
